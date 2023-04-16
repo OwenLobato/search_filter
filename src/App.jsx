@@ -25,6 +25,7 @@ function App() {
         filterRule={
           (user, search) => user.name.toLowerCase().includes(search.toLowerCase())
         }
+        tableColumns={["name","username","email"]}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Search({ getObjects, filterRule }) {
+export default function Search({ getObjects, filterRule, tableColumns }) {
 
   const [objects, setObjects] = useState([]);
   const [search, setSearch] = useState("");
@@ -14,11 +14,11 @@ export default function Search({ getObjects, filterRule }) {
     return !search ? objects : objects.filter(object => filterRule(object, search));
   };
 
+  const filteredObjects = filterObjects(objects, search);
+
   useEffect(() => {
     getObjects().then(objects => setObjects(objects));
   }, [getObjects]);
-
-  const filteredObjects = filterObjects(objects, search);
 
   return (
     <div>
@@ -34,16 +34,18 @@ export default function Search({ getObjects, filterRule }) {
       <table className="table table-striped table-hover mt-5 shadow-lg">
         <thead>
           <tr className="bg-app text-white">
-            <th>NAME</th>
-            <th>USER NAME</th>
+            {tableColumns.map((columnName, index) => (
+              <th key={index}>{columnName}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {
             filteredObjects.map((object) => (
               <tr key={object.id}>
-                <td>{object.name}</td>
-                <td>{object.username}</td>
+                {tableColumns.map((columnName, index) => (
+                  <td key={index}>{object[columnName]}</td>
+                ))}
               </tr>
             ))
           }
