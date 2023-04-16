@@ -11,18 +11,24 @@ export default function Search() {
   const obtainUsers = () => {
     getUsers()
       .then((response) => {
-        console.log("[RESPONSE]",response);
+        console.log("[RESPONSE]", response);
         setUsers(response);
       })
       .catch((error) => {
-        console.log("[ERROR]",error);
+        console.log("[ERROR]", error);
       })
   }
 
   const catchInput = (event) => {
     console.log("[CATCH INPUT]", event.target.value);
-    setSearch(event.target.value)
+    setSearch(event.target.value);
   };
+
+  let results = ( 
+    !search
+      ? users
+      : users.filter(user => user.name.toLowerCase().includes(search.toLowerCase()))
+  );
 
   useEffect(() => {
     obtainUsers();
@@ -35,7 +41,7 @@ export default function Search() {
         className="form-control"
         type="text"
         placeholder="Search..."
-        defaultValue={search}
+        value={search}
         onChange={catchInput}
       />
 
@@ -48,8 +54,7 @@ export default function Search() {
         </thead>
         <tbody>
           {
-            users.length > 0 &&
-            users.map((user) => (
+            results.map((user) => (
               <tr key={user.id}>
                 <td>{user.name}</td>
                 <td>{user.username}</td>
