@@ -6,17 +6,23 @@ export default function Search() {
   const { getUsers } = useUsers();
 
   const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
 
   const obtainUsers = () => {
     getUsers()
       .then((response) => {
-        console.log(response);
+        console.log("[RESPONSE]",response);
         setUsers(response);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("[ERROR]",error);
       })
   }
+
+  const catchInput = (event) => {
+    console.log("[CATCH INPUT]", event.target.value);
+    setSearch(event.target.value)
+  };
 
   useEffect(() => {
     obtainUsers();
@@ -24,6 +30,15 @@ export default function Search() {
 
   return (
     <div>
+
+      <input
+        className="form-control"
+        type="text"
+        placeholder="Search..."
+        defaultValue={search}
+        onChange={catchInput}
+      />
+
       <table className="table table-striped table-hover mt-5 shadow-lg">
         <thead>
           <tr className="bg-app text-white">
