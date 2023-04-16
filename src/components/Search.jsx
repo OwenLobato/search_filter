@@ -5,10 +5,6 @@ export default function Search({ getObjects, filterRule, tableColumns }) {
   const [objects, setObjects] = useState([]);
   const [search, setSearch] = useState("");
 
-  const catchInput = (event) => {
-    console.log("[CATCH INPUT]", event.target.value);
-    setSearch(event.target.value);
-  };
 
   const filterObjects = (objects, search) => {
     return !search ? objects : objects.filter(object => filterRule(object, search));
@@ -28,7 +24,7 @@ export default function Search({ getObjects, filterRule, tableColumns }) {
         type="text"
         placeholder="Search..."
         value={search}
-        onChange={catchInput}
+        onChange={(e) => {setSearch(e.target.value)}}
       />
 
       <table className="table table-striped table-hover mt-5 shadow-lg">

@@ -11,22 +11,18 @@ function App() {
   const obtainUsers = () => {
     return getUsers()
       .then((response) => {
-        console.log("[RESPONSE]", response);
         return response;
       })
       .catch((error) => {
-        console.log("[ERROR]", error);
       })
   }
 
   const obtainCharacters = () => {
     return getCharacters()
       .then((response) => {
-        console.log("[RESPONSE]", response);
         return response;
       })
       .catch((error) => {
-        console.log("[ERROR]", error);
       })
   }
 
@@ -38,7 +34,7 @@ function App() {
       <Search
         getObjects={obtainUsers}
         filterRule={
-          (user, search) => user.phone.toLowerCase().includes(search.toLowerCase())
+          (user, search) => user.phone.toLowerCase().includes(search.toLowerCase()) // Filter by phone
         }
         tableColumns={["name","phone","email", "website"]}
         />
@@ -47,7 +43,7 @@ function App() {
       <Search
         getObjects={obtainCharacters}
         filterRule={
-          (character, search) => character.name.toLowerCase().includes(search.toLowerCase())
+          (character, search) => character.name.toLowerCase().includes(search.toLowerCase()) // Filter by name
         }
         tableColumns={["name","status","species","gender"]}
       />
