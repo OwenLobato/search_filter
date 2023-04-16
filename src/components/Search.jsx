@@ -1,42 +1,27 @@
 import { useState, useEffect } from "react";
-import useUsers from "../hooks/useUsers";
 
-export default function Search() {
-
-  const { getUsers } = useUsers();
+export default function Search({ getObjects }) {
 
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-
-  const obtainUsers = () => {
-    getUsers()
-      .then((response) => {
-        console.log("[RESPONSE]", response);
-        setUsers(response);
-      })
-      .catch((error) => {
-        console.log("[ERROR]", error);
-      })
-  }
 
   const catchInput = (event) => {
     console.log("[CATCH INPUT]", event.target.value);
     setSearch(event.target.value);
   };
 
-  let results = ( 
+  useEffect(() => {
+    getObjects().then(response => setUsers(response));
+  }, [getObjects]);
+
+  let results = (
     !search
       ? users
       : users.filter(user => user.name.toLowerCase().includes(search.toLowerCase()))
   );
 
-  useEffect(() => {
-    obtainUsers();
-  }, []);
-
   return (
     <div>
-
       <input
         className="form-control"
         type="text"
@@ -64,5 +49,5 @@ export default function Search() {
         </tbody>
       </table>
     </div>
-  )
+  );
 }
