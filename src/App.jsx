@@ -14,13 +14,18 @@ function App() {
       })
       .catch((error) => {
         console.log("[ERROR]", error);
-      });
+      })
   }
 
   return (
     <div className="container-fluid">
       <h2 className="mt-4 text-center">React filter search</h2>
-      <Search getObjects={obtainUsers} />
+      <Search
+        getObjects={obtainUsers}
+        filterRule={
+          (user, search) => user.name.toLowerCase().includes(search.toLowerCase())
+        }
+      />
     </div>
   );
 }

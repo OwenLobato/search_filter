@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-export default function Search({ getObjects }) {
+export default function Search({ getObjects, filterRule }) {
 
-  const [users, setUsers] = useState([]);
+  const [objects, setObjects] = useState([]);
   const [search, setSearch] = useState("");
 
   const catchInput = (event) => {
@@ -10,18 +10,19 @@ export default function Search({ getObjects }) {
     setSearch(event.target.value);
   };
 
+  const filterObjects = (objects, search) => {
+    return !search ? objects : objects.filter(object => filterRule(object, search));
+  };
+
   useEffect(() => {
-    getObjects().then(response => setUsers(response));
+    getObjects().then(objects => setObjects(objects));
   }, [getObjects]);
 
-  let results = (
-    !search
-      ? users
-      : users.filter(user => user.name.toLowerCase().includes(search.toLowerCase()))
-  );
+  const filteredObjects = filterObjects(objects, search);
 
   return (
     <div>
+
       <input
         className="form-control"
         type="text"
@@ -39,15 +40,15 @@ export default function Search({ getObjects }) {
         </thead>
         <tbody>
           {
-            results.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.username}</td>
+            filteredObjects.map((object) => (
+              <tr key={object.id}>
+                <td>{object.name}</td>
+                <td>{object.username}</td>
               </tr>
             ))
           }
         </tbody>
       </table>
     </div>
-  );
+  )
 }
