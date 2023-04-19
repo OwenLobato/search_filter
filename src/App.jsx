@@ -28,19 +28,35 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <h2 className="mt-4 text-center">React filter search</h2>
+      <h2 className="my-5 text-center">REACT SEARCH BY FILTER</h2>
 
-      <h3>API 1 (jsonplaceholder)</h3>
+      <h3 className="text-center">API 1 (jsonplaceholder)</h3>
       <Search
         getObjects={obtainUsers}
         tableColumns={["name", "phone", "email", "website"]}
       />
 
-      <h3 className="mt-4">API 2 (rickandmortyapi)</h3>
+      <h3 className="mt-5 text-center">API 2 (rickandmortyapi)</h3>
       <Search
         getObjects={obtainCharacters}
         tableColumns={["name", "status", "species", "gender"]}
       />
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <img
+                src="https://trabajoenequipo.neocities.org/Imagenes/gitHub.png"
+                alt="Github logo"
+                style={{ width: "35px", height: "35px", marginRight: "10px" }}
+              />
+              @OwenLobato
+            </div>
+          </div>
+        </div>
+      </footer>
+
     </div>
   );
 }

@@ -5,3 +5,12 @@
 .search-container{
   background-color: #F2F2F2;
 }
+
+.footer {
+  background-color: #343a40;
+  color: #fff;
+  padding: 1rem;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}

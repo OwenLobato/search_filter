@@ -21,7 +21,7 @@ export default function Search({ getObjects, tableColumns }) {
   }, [getObjects]);
 
   return (
-    <div>
+    <div className="w-75 mx-auto">
       {/* Filter options */}
       <div className="container search-container rounded shadow">
         <div className="row justify-content-center align-items-center py-2">
