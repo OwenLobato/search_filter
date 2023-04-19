@@ -33,13 +33,13 @@ function App() {
       <h3>API 1 (jsonplaceholder)</h3>
       <Search
         getObjects={obtainUsers}
-        tableColumns={["name","phone","email", "website"]}
-        />
+        tableColumns={["name", "phone", "email", "website"]}
+      />
 
       <h3 className="mt-4">API 2 (rickandmortyapi)</h3>
       <Search
         getObjects={obtainCharacters}
-        tableColumns={["name","status","species","gender"]}
+        tableColumns={["name", "status", "species", "gender"]}
       />
     </div>
   );
