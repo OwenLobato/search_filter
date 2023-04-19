@@ -33,18 +33,12 @@ function App() {
       <h3>API 1 (jsonplaceholder)</h3>
       <Search
         getObjects={obtainUsers}
-        filterRule={
-          (user, search) => user.phone.toLowerCase().includes(search.toLowerCase()) // Filter by phone
-        }
         tableColumns={["name","phone","email", "website"]}
         />
 
       <h3 className="mt-4">API 2 (rickandmortyapi)</h3>
       <Search
         getObjects={obtainCharacters}
-        filterRule={
-          (character, search) => character.name.toLowerCase().includes(search.toLowerCase()) // Filter by name
-        }
         tableColumns={["name","status","species","gender"]}
       />
     </div>
