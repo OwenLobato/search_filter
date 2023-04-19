@@ -54,17 +54,18 @@ This is a generic example of the response that should be received from the API
 ## Examples
 
 This is how the application is displayed with the data from API 1 (https://jsonplaceholder.typicode.com/users) and the selected columns
-![API_1](src\assets\search_filter_api_1.png)
+
+![API_1](src/assets/search_filter_api_1.png)
 
 This is how it looks with the data from API 2 (https://rickandmortyapi.com/api/character/?page=1)
-![API_2](src\assets\search_filter_api_2.png)
+![API_2](src/assets/search_filter_api_2.png)
 
 Here is a filter by name (first column selected by default) in API 2
-![filter_by_name](src\assets\filter_by_name.png)
+![filter_by_name](src/assets/filter_by_name.png)
 
 Here are the possible filters that can be performed (according to the table columns or the object keys), but a filter is selected by another column other than the default (species)
-![filter_by_other_column](src\assets\filter_by_other_column.png)
+![filter_by_other_column](src/assets/filter_by_other_column.png)
 
 And this is what it will look like when there are no matches
-![no_results](src\assets\no_results.png)
+![no_results](src/assets/no_results.png)
 
