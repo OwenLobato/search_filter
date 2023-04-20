@@ -42,16 +42,16 @@ function App() {
         tableColumns={["name", "status", "species", "gender"]}
       />
 
-      <footer class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col text-center">
+      <footer className="footer">
+        <div className="container">
+          <div className="row">
+            <div className="col text-center">
               <img
                 src="https://trabajoenequipo.neocities.org/Imagenes/gitHub.png"
                 alt="Github logo"
                 style={{ width: "35px", height: "35px", marginRight: "10px" }}
               />
-              @OwenLobato
+              @OwenLobato: <a href="https://github.com/OwenLobato/search_filter">search_filter</a>
             </div>
           </div>
         </div>
